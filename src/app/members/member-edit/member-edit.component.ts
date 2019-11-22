@@ -6,6 +6,7 @@ import { cloneWithOffset } from 'ngx-bootstrap/chronos/units/offset';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
+import { Photo } from 'src/app/_models/Photo';
 
 @Component({
   selector: 'app-member-edit',
@@ -14,6 +15,7 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class MemberEditComponent implements OnInit {
   user: User;
+  photoUrl : string;
   // prevent you from leaving page with unsaved changes
   @ViewChild('editForm', {static: true})editForm: NgForm;
   // prevent you from closing the tab with unsaved changes
@@ -32,6 +34,7 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   updateUser() {
@@ -41,5 +44,9 @@ export class MemberEditComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
   }
 }
