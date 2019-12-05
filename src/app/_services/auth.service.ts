@@ -42,7 +42,7 @@ export class AuthService {
     return this.http.post(this.baseUrl + 'register', user);
   }
 
-  loggedIn () {
+  loggedIn() {
     const token = localStorage.getItem('token');
     // notice the inversion below.
     return !this.jwtHelper.isTokenExpired(token);
