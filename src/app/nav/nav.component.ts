@@ -22,8 +22,8 @@ export class NavComponent implements OnInit {
 
   login() {
     this.authService.login(this.model).subscribe(
-      next => {this.alertify.success('Logged in Succesfully'); },
-      error => {this.alertify.error(error); },
+      next => {this.alertify.success('Logged in Succesfully'); console.log('Logged in');},
+      error => {this.alertify.error(error); console.log('There was an error');},
       () => {this.router.navigate(['/members']); }
     );
   }
