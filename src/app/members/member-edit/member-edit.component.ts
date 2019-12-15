@@ -15,7 +15,7 @@ import { Photo } from 'src/app/_models/Photo';
 })
 export class MemberEditComponent implements OnInit {
   user: User;
-  photoUrl : string;
+  photoUrl: string;
   // prevent you from leaving page with unsaved changes
   @ViewChild('editForm', {static: true})editForm: NgForm;
   // prevent you from closing the tab with unsaved changes
